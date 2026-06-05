@@ -21,11 +21,15 @@
 
     <!-- Declare shared libraries (framework JARs yang kita sertakan) -->
     <library
-        name="xiaomi-framework"
+        name="com.miui.system"
         file="/system/framework/xiaomi-framework.jar"/>
 
     <library
-        name="miuix"
+        name="com.miui.core"
         file="/system/framework/miuix.jar"/>
+
+    <library
+        name="pag-hyperos-release.jar"
+        file="/system/framework/pag-hyperos-release.jar"/>
 
 </config>

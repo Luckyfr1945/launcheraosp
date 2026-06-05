@@ -26,6 +26,7 @@ output/
 magisk-module/system/product/priv-app/MiuiHome/MiuiHome.apk
 magisk-module/system/framework/xiaomi-framework.jar
 magisk-module/system/framework/miuix.jar
+magisk-module/system/framework/pag-hyperos-release.jar
 magisk-module/system/lib64/
 
 # Native libs (proprietary)
@@ -43,3 +44,8 @@ Thumbs.db
 *.tmp
 *.temp
 tools/apktool.jar
+tools/r8.jar
+tools/baksmali.jar
+framework-stubs/out/
+scratch/
+docs/jars_aosp/

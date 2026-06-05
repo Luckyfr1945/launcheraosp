@@ -55,13 +55,19 @@ echo "  ✅ APK copied ($(du -sh "$MODULE_DIR/system/product/priv-app/MiuiHome/M
 # --- Copy framework JARs ---
 echo ""
 echo "[3/5] Copy framework JARs..."
-if [ -f "$FRAMEWORK_DIR/xiaomi-framework.jar" ]; then
+if [ -f "$MODULE_DIR/system/framework/xiaomi-framework.jar" ]; then
+    echo "  ✅ xiaomi-framework.jar (using built merged version)"
+elif [ -f "$FRAMEWORK_DIR/xiaomi-framework.jar" ]; then
     cp "$FRAMEWORK_DIR/xiaomi-framework.jar" "$MODULE_DIR/system/framework/"
-    echo "  ✅ xiaomi-framework.jar"
+    echo "  ✅ xiaomi-framework.jar (copied from docs/jars)"
 fi
 if [ -f "$FRAMEWORK_DIR/miuix.jar" ]; then
     cp "$FRAMEWORK_DIR/miuix.jar" "$MODULE_DIR/system/framework/"
     echo "  ✅ miuix.jar"
+fi
+if [ -f "$FRAMEWORK_DIR/system_ext/pag-hyperos-release.jar" ]; then
+    cp "$FRAMEWORK_DIR/system_ext/pag-hyperos-release.jar" "$MODULE_DIR/system/framework/"
+    echo "  ✅ pag-hyperos-release.jar"
 fi
 
 # --- Copy native libs (jika ada yang perlu di-expose ke system) ---

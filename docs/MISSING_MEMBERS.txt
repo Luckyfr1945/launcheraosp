@@ -1,0 +1,195 @@
+Class: com.miui.home.launcher.common.HapticFeedbackCompat
+  Fields:
+  Methods:
+    getInstance()Lcom/miui/home/launcher/common/HapticFeedbackCompat;
+    performGestureReadyBack()V
+
+Class: com.miui.internal.R$color
+  Fields:
+    progressDisableColor : I
+    progressPrimaryColor : I
+  Methods:
+
+Class: com.miui.internal.R$id
+  Fields:
+    seekbar_background_semicircle : I
+  Methods:
+
+Class: com.miui.internal.R$styleable
+  Fields:
+    ProgressBar_foregroundPrimaryColor : I
+    ProgressBar_foregroundPrimaryDisableColor : I
+  Methods:
+
+Class: com.miui.newhome.view.gestureview.FeedActionListener
+  Fields:
+  Methods:
+
+Class: com.miui.newhome.view.gestureview.NewHomeState
+  Fields:
+    HIDE : Lcom/miui/newhome/view/gestureview/NewHomeState;
+    SCROLL_TO_HIDE : Lcom/miui/newhome/view/gestureview/NewHomeState;
+    SCROLL_TO_SHOW : Lcom/miui/newhome/view/gestureview/NewHomeState;
+    SHOW : Lcom/miui/newhome/view/gestureview/NewHomeState;
+  Methods:
+
+Class: com.miui.newhome.view.gestureview.NewHomeView
+  Fields:
+  Methods:
+    changeState(Lcom/miui/newhome/view/gestureview/NewHomeState;)V
+    dispatchKeyEvent(Landroid/view/KeyEvent;)Z
+    getNewHomeState()Lcom/miui/newhome/view/gestureview/NewHomeState;
+    getVisibility()I
+    isAppBarLayoutScroll()Z
+    isViewPagerScorll()Z
+    onBackPressed()Z
+    onDestory()V
+    onNewIntent(Landroid/content/Intent;)V
+    onPause()V
+    onResume()V
+    onTransProgress(F)V
+    setFeedActionListener(Lcom/miui/newhome/view/gestureview/FeedActionListener;)V
+    setTranslationY(F)V
+    setVisibility(I)V
+    shouldContainerScroll(Landroid/view/MotionEvent;)Z
+
+Class: com.xiaomi.analytics.Action
+  Fields:
+  Methods:
+
+Class: com.xiaomi.analytics.Actions
+  Fields:
+  Methods:
+    newAdAction(Ljava/lang/String;)Lcom/xiaomi/analytics/AdAction;
+
+Class: com.xiaomi.analytics.AdAction
+  Fields:
+  Methods:
+    addParam(Ljava/lang/String;J)Lcom/xiaomi/analytics/Action;
+    addParam(Ljava/lang/String;Ljava/lang/String;)Lcom/xiaomi/analytics/Action;
+
+Class: com.xiaomi.analytics.Analytics
+  Fields:
+  Methods:
+    getInstance(Landroid/content/Context;)Lcom/xiaomi/analytics/Analytics;
+    getTracker(Ljava/lang/String;)Lcom/xiaomi/analytics/Tracker;
+    setDontUseSystemAnalytics(Z)V
+
+Class: com.xiaomi.analytics.Tracker
+  Fields:
+  Methods:
+    track(Ljava/lang/String;Lcom/xiaomi/analytics/Action;)V
+
+Class: com.xiaomi.freeform.MiuiFreeformStub
+  Fields:
+  Methods:
+    getActivityOptions(Landroid/content/Context;Ljava/lang/String;ZZ)Landroid/app/ActivityOptions;
+    getInstance()Lcom/xiaomi/freeform/MiuiFreeformStub;
+    supportFreeform()Z
+
+Class: miui.R$attr
+  Fields:
+    seekBarProgressForegroundDisableColor : I
+    seekBarProgressForegroundNormalColor : I
+  Methods:
+
+Class: miui.R$styleable
+  Fields:
+    ProgressBar : [I
+  Methods:
+
+Class: miui.app.IMiuiFreeFormGuideTipServices
+  Fields:
+  Methods:
+    getShowGuideClick()I
+    getShowGuideController()I
+    getShowGuideDock()I
+    getShowGuideFreeform()I
+    getShowGuideNotification()I
+    getShowGuidePin()I
+    getShowGuideSideBar()I
+    getShowGuideSplit()I
+    hasTipView()Z
+    hasTipViewType(I)Z
+    removeFreeFormTipView(I)V
+    setShowGuideClick(I)V
+    setShowGuideController(I)V
+    setShowGuideFreeform(I)V
+    setShowGuideNotification(I)V
+    setShowGuidePin(I)V
+    setShowGuideSideBar(I)V
+    setShowGuideSplit(I)V
+    showFreeFormGuideDialog(I)V
+    showFreeFormTipView(IIII)V
+    showFreeFormTipViewByClassName(IIIILjava/lang/String;)V
+
+Class: miui.app.IMiuiFreeFormGuideTipServices$Stub
+  Fields:
+  Methods:
+    asInterface(Landroid/os/IBinder;)Lmiui/app/IMiuiFreeFormGuideTipServices;
+
+Class: miui.app.IMiuiFreeFormManager
+  Fields:
+  Methods:
+    getAllFreeFormStackInfosOnDisplay(I)Ljava/util/List;
+    getAllPinedFreeFormStackInfosOnDisplay(I)Ljava/util/List;
+    getFreeFormStackInfoByActivity(Landroid/os/IBinder;)Lmiui/app/MiuiFreeFormManager$MiuiFreeFormStackInfo;
+    getFreeFormStackInfoByStackId(I)Lmiui/app/MiuiFreeFormManager$MiuiFreeFormStackInfo;
+    getFreeFormStackInfoByWindow(Landroid/os/IBinder;)Lmiui/app/MiuiFreeFormManager$MiuiFreeFormStackInfo;
+    getFreeFormStackToAvoid(ILjava/lang/String;)Lmiui/app/MiuiFreeFormManager$MiuiFreeFormStackInfo;
+    hasMiuiFreeformOnShellFeature()Z
+    isSupportPin()Z
+    notifyCameraStateChanged(Ljava/lang/String;I)V
+    openCameraInFreeForm(Ljava/lang/String;)Z
+    registerFreeformCallback(Lmiui/app/IFreeformCallback;)V
+    startSmallFreeformFromNotification()I
+    unregisterFreeformCallback(Lmiui/app/IFreeformCallback;)V
+
+Class: miui.autoinstall.config.pm.PackageManagerCompat
+  Fields:
+  Methods:
+    <init>(Landroid/content/Context;)V
+    packageExists(Landroid/content/pm/PackageManager;Ljava/lang/String;)Z
+
+Class: miui.log.MiuiSlog
+  Fields:
+  Methods:
+    d(Ljava/lang/String;Ljava/lang/String;)V
+
+Class: miui.module.ModuleManager
+  Fields:
+  Methods:
+    getInstance()Lmiui/module/ModuleManager;
+    loadModules([Ljava/lang/String;)V
+    setModuleLoadListener(Lmiui/module/ModuleManager$ModuleLoadListener;)V
+
+Class: miui.module.ModuleManager$ModuleLoadListener
+  Fields:
+  Methods:
+
+Class: miui.os.FileUtils
+  Fields:
+  Methods:
+    getName(Ljava/lang/String;)Ljava/lang/String;
+
+Class: miui.theme.ThemeManagerHelper
+  Fields:
+  Methods:
+    needDisableTheme(Landroid/content/Context;)Z
+
+Class: miui.util.HashUtils
+  Fields:
+  Methods:
+    getHash(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    getSHA1(Ljava/io/File;)Ljava/lang/String;
+
+Class: miui.util.ScreenshotUtils
+  Fields:
+  Methods:
+    getScreenshot(Landroid/content/Context;FIIZ)Landroid/graphics/Bitmap;
+
+Class: miui.widget.SeekBar
+  Fields:
+  Methods:
+    <init>(Landroid/content/Context;)V
+
