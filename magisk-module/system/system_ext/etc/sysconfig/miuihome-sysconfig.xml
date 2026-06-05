@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    miuihome-sysconfig.xml
+    MiuiHome Launcher Port — HyperOS 3 → AOSP Android 16
+
+    System config untuk MiuiHome:
+    - Whitelist sebagai privileged app
+    - Allow background activity
+    - Declare shared library (xiaomi-framework, miuix)
+-->
+<config>
+
+    <!-- Whitelist MiuiHome sebagai privileged app -->
+    <allow-in-power-save package="com.miui.home"/>
+    <allow-in-data-usage-save package="com.miui.home"/>
+    <allow-unthrottled-location package="com.miui.home"/>
+    <allow-implicit-broadcast package="com.miui.home" action="android.intent.action.PACKAGE_ADDED"/>
+    <allow-implicit-broadcast package="com.miui.home" action="android.intent.action.PACKAGE_REMOVED"/>
+    <allow-implicit-broadcast package="com.miui.home" action="android.intent.action.PACKAGE_CHANGED"/>
+    <allow-implicit-broadcast package="com.miui.home" action="android.intent.action.PACKAGE_REPLACED"/>
+
+    <!-- Declare shared libraries (framework JARs yang kita sertakan) -->
+    <library
+        name="xiaomi-framework"
+        file="/system/framework/xiaomi-framework.jar"/>
+
+    <library
+        name="miuix"
+        file="/system/framework/miuix.jar"/>
+
+</config>

@@ -1,0 +1,45 @@
+# Git ignore untuk port-launcher project
+
+# APK files (terlalu besar untuk GitHub, simpan lokal)
+apk-extract/MiuiHome.apk
+apk-extract/miuihome_libs/
+
+# Framework JARs (besar + proprietary)
+docs/jars/framework.jar
+docs/jars/services.jar
+docs/jars/xiaomi-framework.jar
+docs/jars/miuix.jar
+docs/jars/system_ext/
+
+# Hasil decompile (bisa digenerate ulang dari APK)
+apk-extract/apktool/
+apk-extract/apktool_smali/
+apk-extract/jadx/
+
+# Super.img extracted partitions (sangat besar)
+apk-extract/super-extract/
+
+# Build output
+output/
+
+# APK yang sudah dicopy ke module (ada di apk-extract)
+magisk-module/system/product/priv-app/MiuiHome/MiuiHome.apk
+magisk-module/system/framework/xiaomi-framework.jar
+magisk-module/system/framework/miuix.jar
+magisk-module/system/lib64/
+
+# Native libs (proprietary)
+native-libs/
+
+# Log files
+*.log
+logcat-analysis/*.txt
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temp
+*.tmp
+*.temp
+tools/apktool.jar

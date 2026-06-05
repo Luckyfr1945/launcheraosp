@@ -1,0 +1,31 @@
+--- a/frameworks/base/services/core/java/com/android/server/SystemServer.java
++++ b/frameworks/base/services/core/java/com/android/server/SystemServer.java
+@@ -XXX,6 +XXX,8 @@
+ // =====================================================================
+ // PATCH: HyperOS 3 Launcher → AOSP Android 16 Port
+ // Tambahkan import ini di bagian atas file SystemServer.java
+ // =====================================================================
++import com.miui.server.MiuiStubService;
++import com.miui.server.MiuiSettingsService;
+
+ // Di dalam method startOtherServices() atau startCoreServices():
+ // Cari baris yang ada: "startOtherServices(t);"
+ // Tambahkan sebelum baris tersebut:
+
++        // [PORT PATCH] MiuiHome Launcher stubs — HyperOS 3 → AOSP A16
++        try {
++            Slog.i(TAG, "Starting MiuiStubService (port stub)...");
++            ServiceManager.addService("miui_stub",
++                new MiuiStubService(context));
++        } catch (Throwable e) {
++            Slog.e(TAG, "MiuiStubService failed to start (non-fatal)", e);
++            // Non-fatal: launcher akan fallback ke mode tanpa service ini
++        }
++
++        try {
++            Slog.i(TAG, "Starting MiuiSettingsService (port stub)...");
++            ServiceManager.addService("miui_settings",
++                new MiuiSettingsService(context));
++        } catch (Throwable e) {
++            Slog.e(TAG, "MiuiSettingsService failed to start (non-fatal)", e);
++        }

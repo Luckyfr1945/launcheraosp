@@ -1,0 +1,7 @@
+id=miuihome-port-aosp
+name=MiuiHome Launcher Port (HyperOS 3 → AOSP)
+version=v1.0-beta
+versionCode=1
+author=kiki
+description=Port HyperOS 3 Launcher (com.miui.home) ke AOSP Android 16. Device: Poco F4 (munch). Jika bootloop, hapus modul via recovery.
+updateJson=

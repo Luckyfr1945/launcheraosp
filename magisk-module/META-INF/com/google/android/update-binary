@@ -1,0 +1,98 @@
+#!/sbin/sh
+# =============================================================
+# update-binary — Magisk Module Installer
+# MiuiHome Launcher Port: HyperOS 3 → AOSP Android 16
+# Device: Poco F4 (munch)
+# =============================================================
+
+SKIPUNZIP=1
+
+# --- Setup UI ---
+ui_print() { echo "$1"; }
+require_new_magisk() {
+    ui_print "*******************************"
+    ui_print " Please update Magisk! "
+    ui_print "*******************************"
+    exit 1
+}
+
+# Cek Magisk API version
+[ "$MAGISK_VER_CODE" ] || require_new_magisk
+[ "$MAGISK_VER_CODE" -lt 20400 ] && require_new_magisk
+
+ui_print ""
+ui_print "╔══════════════════════════════════════╗"
+ui_print "║   MiuiHome Launcher Port             ║"
+ui_print "║   HyperOS 3 → AOSP Android 16        ║"
+ui_print "║   Device: Poco F4 (munch)            ║"
+ui_print "╚══════════════════════════════════════╝"
+ui_print ""
+
+# --- Cek Android version ---
+ANDROID_VER=$(getprop ro.build.version.release)
+API_LEVEL=$(getprop ro.build.version.sdk)
+ui_print "📱 Android: $ANDROID_VER (API $API_LEVEL)"
+
+if [ "$API_LEVEL" -lt 35 ]; then
+    ui_print ""
+    ui_print "⚠️  WARNING: Module ini dibuat untuk Android 15/16+"
+    ui_print "   Android kamu: $ANDROID_VER"
+    ui_print "   Lanjut dengan risiko sendiri..."
+    sleep 2
+fi
+
+# --- Cek apakah sudah ada AOSP launcher ---
+AOSP_LAUNCHER=$(pm list packages 2>/dev/null | grep -E "com.android.launcher3|com.android.launcher")
+if [ -n "$AOSP_LAUNCHER" ]; then
+    ui_print "🔍 AOSP launcher ditemukan: $AOSP_LAUNCHER"
+    ui_print "   Akan di-disable setelah install..."
+fi
+
+# --- Extract modul ke MODPATH ---
+ui_print ""
+ui_print "📦 Extracting module files..."
+unzip -o "$ZIPFILE" 'system/*' -d "$MODPATH" >&2
+unzip -o "$ZIPFILE" 'module.prop' -d "$MODPATH" >&2
+unzip -o "$ZIPFILE" 'service.sh' -d "$MODPATH" >&2
+unzip -o "$ZIPFILE" 'post-fs-data.sh' -d "$MODPATH" >&2
+
+# --- Set permissions ---
+ui_print "🔒 Setting permissions..."
+
+# APK harus readable oleh semua
+set_perm_recursive "$MODPATH/system/product/priv-app" root root 0755 0644
+
+# Framework JARs
+set_perm_recursive "$MODPATH/system/framework" root root 0755 0644
+
+# Permission XMLs
+set_perm_recursive "$MODPATH/system/system_ext/etc" root root 0755 0644
+
+ui_print "✅ Permissions set"
+
+# --- Disable AOSP Launcher ---
+ui_print ""
+ui_print "🚫 Disabling AOSP Launcher3..."
+
+# Buat file disable untuk Launcher3 (Magisk way)
+LAUNCHER3_PATH=$(pm list packages -f 2>/dev/null | grep "Launcher3\|launcher3" | sed 's/package://;s/=.*//')
+if [ -n "$LAUNCHER3_PATH" ]; then
+    # Catat path untuk service.sh
+    echo "$LAUNCHER3_PATH" > "$MODPATH/launcher3_path.txt"
+    ui_print "   Launcher3 path: $LAUNCHER3_PATH"
+fi
+
+ui_print ""
+ui_print "╔══════════════════════════════════════╗"
+ui_print "║   ✅ Install SELESAI!                ║"
+ui_print "║                                      ║"
+ui_print "║   ⚠️  PENTING:                       ║"
+ui_print "║   Jika bootloop setelah reboot:      ║"
+ui_print "║   1. Masuk ke recovery               ║"
+ui_print "║   2. Atau volume- saat boot Magisk   ║"
+ui_print "║      untuk masuk safe mode           ║"
+ui_print "║   3. Hapus modul ini                 ║"
+ui_print "║                                      ║"
+ui_print "║   Reboot sekarang? (auto 5 detik)    ║"
+ui_print "╚══════════════════════════════════════╝"
+ui_print ""
