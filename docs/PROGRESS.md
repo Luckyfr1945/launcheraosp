@@ -6,23 +6,20 @@
 ## Pendekatan: 🧲 MAGISK MODULE (bukan ROM baking)
 > Lebih aman — kalau bootloop tinggal hapus module dari recovery!
 
-## Status: 🟢 Tahap 3 — Build Magisk Module
+## Status: 🟢 Tahap 4 — Pengujian Magisk Module
 
 | Tahap | Status | Notes |
 |-------|--------|-------|
 | Buat struktur folder | ✅ Done | |
 | Setup scripts | ✅ Done | |
-| Setup device tree | ✅ Done | device_miuihome.mk |
-| **Dapat MiuiHome.apk** | ✅ Done | 26MB via ADB pull |
-| **Dapat Framework JARs** | ✅ Done | framework.jar, services.jar, xiaomi-framework.jar, miuix.jar |
-| **Dapat Native .so** | ✅ Done | 4 libs dari dalam APK (filament, jniLibs) |
-| Decompile APK (apktool) | ✅ Done | 15.618 smali files |
-| Analisis dependencies | ✅ Done | 3.187 unique Xiaomi classes ditemukan |
-| AOSP source sync | ⏳ Pending | Sedang download... |
-| Generate stubs | ⏳ Pending | Tunggu AOSP untuk cross-check |
-| Patch AOSP source | ⏳ Pending | |
-| Build pertama | ⏳ Pending | |
-| Flash & analisis logcat | ⏳ Pending | |
+| Setup device tree | ✅ Done | |
+| **Dapat MiuiHome.apk** | ✅ Done | |
+| **Dapat Framework JARs** | ✅ Done | |
+| **Dapat Native .so** | ✅ Done | 6 libs (termasuk libffavc dan libpag dari device) |
+| Decompile & Analisis | ✅ Done | 27 missing classes teridentifikasi |
+| Generate & compile stubs | ✅ Done | Dikompilasi dengan android-36 SDK & dimerge via D8 |
+| Build Magisk Module ZIP | ✅ Done | Output di `output/` |
+| Flash & analisis logcat | ⏳ Pending | Siap diuji di HP dengan AOSP A16 |
 | Fix error iterasi ke-2+ | ⏳ Pending | |
 | Launcher stabil | ⏳ Pending | |
 
